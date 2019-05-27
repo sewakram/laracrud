@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Laravel</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        
+    </head>
+    <body>
+        <div class="container">
+                   
+<section id="advertisement">
+    <div class="container">
+        <img src="{{asset('images/shop/advertisement.jpg')}}" alt="" />
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                   
+                </div>
+            </div>
+            <?php //print_r($products); ?>
+            <div class="col-sm-9 padding-right">
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">Features Items</h2>
+                    @foreach ($products as $product)
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <!-- <div class="productinfo text-center">
+                                    <img src="{{asset('images/shop/product9.jpg')}}" alt="" />
+                                    <h2>${{$product->price}}</h2>
+                                    <p>{{$product->name}}</p>
+                                    <a href="{{url('cart')}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <a href='{{url("products/details/$product->id")}}' class="btn btn-default add-to-cart"><i class="fa fa-info"></i>View Details</a>
+                                </div> -->
+
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <img src="http://ecx.images-amazon.com/images/I/51ZU%2BCvkTyL.jpg" style="width: 60%;height: 50%;" alt="">
+                                        <h2>${{$product->price}}</h2>
+                                        <p>${{$product->name}}</p>
+                                        <form method="POST" action="{{url('cart')}}">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-primary add-to-cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                            </button>
+                                            <a href='{{url("products/details/$product->id")}}' class="btn btn-default add-to-cart"><i class="fa fa-info"></i>View Details</a>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choose">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li><a class="btn btn-warning" href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    <li><a class="btn btn-success" href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    <ul class="pagination">
+                        <li class="active"><a href="">1</a></li>
+                        <li><a href="">2</a></li>
+                        <li><a href="">3</a></li>
+                        <li><a href="">»</a></li>
+                    </ul>
+                </div><!--features_items-->
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+    </body>
+</html>
